@@ -101,17 +101,6 @@ fun ManHinhChiTiet(ten: String, onBack: () -> Unit) {
     }
 }
 
-// Dòng chữ xám giải thích thành phần
-@Composable
-fun GhiChu(noiDung: String) {
-    Text(
-        noiDung,
-        fontSize = 13.sp,
-        color = Color.Gray,
-        modifier = Modifier.padding(top = 16.dp)
-    )
-}
-
 // ===================== DISPLAY =====================
 
 @Composable
@@ -135,11 +124,6 @@ fun ChiTietText() {
     ) {
         Text(cau, fontSize = 28.sp, lineHeight = 46.sp)
         HorizontalDivider(modifier = Modifier.padding(top = 16.dp))
-        GhiChu(
-            "Text dùng để hiển thị chữ. Một đoạn chữ có thể kết hợp nhiều kiểu: " +
-                    "gạch ngang (quick), đổi màu và cỡ chữ (Brown), giãn chữ (jumps), " +
-                    "in đậm nghiêng (over), gạch chân (the) và đổi font (lazy)."
-        )
     }
 }
 
@@ -185,10 +169,6 @@ fun ChiTietImage() {
         )
         Text("In app", fontSize = 12.sp, color = Color.Gray, modifier = Modifier.padding(top = 4.dp))
 
-        GhiChu(
-            "Ảnh trên được tải từ Internet bằng AsyncImage (thư viện Coil). " +
-                    "Ảnh dưới lấy từ thư mục res/drawable trong app bằng Image + painterResource."
-        )
     }
 }
 
@@ -215,7 +195,6 @@ fun ChiTietTextField() {
             fontSize = 14.sp,
             modifier = Modifier.padding(top = 8.dp)
         )
-        GhiChu("TextField cho phép nhập chữ. Mỗi lần gõ, state thay đổi nên dòng chữ đỏ cập nhật ngay lập tức.")
     }
 }
 
@@ -243,7 +222,6 @@ fun ChiTietPassword() {
             modifier = Modifier.fillMaxWidth()
         )
         Text("Độ dài mật khẩu: ${matKhau.length} ký tự", modifier = Modifier.padding(top = 8.dp))
-        GhiChu("PasswordField là TextField che ký tự thành dấu chấm. Bấm Hiện/Ẩn để xem mật khẩu đang gõ.")
     }
 }
 
@@ -279,7 +257,6 @@ fun ChiTietToggle() {
                 fontSize = 18.sp
             )
         }
-        GhiChu("Toggle (trong Compose gọi là Switch) chỉ có 2 trạng thái: bật hoặc tắt.")
     }
 }
 
@@ -305,7 +282,6 @@ fun ChiTietSlider() {
                 .size((giaTri + 20).dp)
                 .background(XanhChu, RoundedCornerShape(8.dp))
         )
-        GhiChu("Slider chọn một giá trị trong khoảng (ở đây từ 0 đến 100). Kéo để thấy hình vuông thay đổi kích thước.")
     }
 }
 
@@ -353,7 +329,6 @@ fun ChiTietColumn() {
                 }
             }
         }
-        GhiChu("Column xếp các phần tử theo chiều dọc, từ trên xuống dưới.")
     }
 }
 
@@ -373,7 +348,6 @@ fun ChiTietRow() {
                 Box(modifier = Modifier.weight(1f).height(56.dp).background(XanhNhat, RoundedCornerShape(10.dp)))
             }
         }
-        GhiChu("Row xếp các phần tử theo chiều ngang, từ trái sang phải. Mỗi hàng ở trên là một Row gồm 3 ô.")
     }
 }
 
@@ -394,7 +368,6 @@ fun ChiTietButton() {
         OutlinedButton(onClick = { soLan++ }) { Text("OutlinedButton") }
         TextButton(onClick = { soLan++ }) { Text("TextButton") }
         ElevatedButton(onClick = { soLan = 0 }) { Text("Đặt lại về 0") }
-        GhiChu("Button thực hiện một hành động khi bấm. Compose có nhiều kiểu nút: Button, OutlinedButton, TextButton, ElevatedButton.")
     }
 }
 
@@ -420,7 +393,6 @@ fun ChiTietCheckbox() {
             "Đã chọn: " + (if (daChon.isEmpty()) "chưa có" else daChon.joinToString(", ")),
             color = XanhChu
         )
-        GhiChu("Checkbox cho phép chọn NHIỀU lựa chọn cùng lúc.")
     }
 }
 
@@ -437,7 +409,6 @@ fun ChiTietRadio() {
             }
         }
         Text("Bạn đã chọn: $gioiTinh", color = XanhChu)
-        GhiChu("RadioButton chỉ cho chọn MỘT lựa chọn trong nhóm. Chọn cái mới thì cái cũ tự bỏ chọn.")
     }
 }
 
@@ -466,7 +437,6 @@ fun ChiTietPicker() {
                 }
             }
         }
-        GhiChu("Picker cho chọn một giá trị từ danh sách xổ xuống (DropdownMenu).")
     }
 }
 
@@ -482,7 +452,6 @@ fun ChiTietNavigationView(onBack: () -> Unit) {
         Text("• App dùng NavHost và NavController để chuyển giữa 3 màn hình: Chào mừng → Danh sách → Chi tiết.")
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = onBack) { Text("Quay lại danh sách") }
-        GhiChu("Bấm nút trên hoặc nút < đều gọi navController.popBackStack() để quay lại.")
     }
 }
 
@@ -510,7 +479,6 @@ fun ChiTietTabBar() {
         ) {
             Text("Nội dung của tab: ${cacTab[tabDangChon]}", fontSize = 18.sp)
         }
-        GhiChu("TabBar (trong Compose là TabRow) giúp chuyển nhanh giữa các phần chính của app.")
     }
 }
 
@@ -542,7 +510,6 @@ fun ChiTietMenu() {
             }
         }
         Text("Bạn đã chọn: $hanhDong", color = XanhChu)
-        GhiChu("Menu hiện danh sách các hành động khi bấm nút ⋮.")
     }
 }
 
@@ -551,8 +518,6 @@ fun ChiTietMenu() {
 @Composable
 fun ChiTietList() {
     Column {
-        GhiChu("List (trong Compose là LazyColumn) hiển thị danh sách dài và cuộn được. Chỉ những mục đang hiện mới được vẽ nên rất nhẹ.")
-        Spacer(modifier = Modifier.height(8.dp))
         LazyColumn {
             items(30) { i ->
                 Text(
@@ -588,7 +553,6 @@ fun ChiTietCard() {
                 Text("Có đường viền, nền trắng")
             }
         }
-        GhiChu("Card là khung chứa nội dung, giúp gom các thông tin liên quan thành một khối.")
     }
 }
 
@@ -611,6 +575,5 @@ fun ChiTietDivider() {
             VerticalDivider()
             Text("Bên phải", modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
         }
-        GhiChu("HorizontalDivider kẻ đường ngang, VerticalDivider kẻ đường dọc để chia nội dung thành từng phần.")
     }
 }
